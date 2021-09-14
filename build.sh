@@ -20,7 +20,6 @@ repo init --depth=1 -u $MANIFEST
 repo sync
 repo sync
 git clone --depth=1 $DT_LINK $DT_PATH
-git clone --depth=1 $KT_LINK $KT_PATH
 
 echo " ===+++ Building Recovery +++==="
 . build/envsetup.sh
@@ -32,7 +31,7 @@ echo " ===+++ Uploading Recovery +++==="
 #version=$(cat bootable/recovery/variables.h | grep "define TW_MAIN_VERSION_STR" | cut -d \" -f2)
 #OUTFILE=TWRP-${version}-${DEVICE}-$(date "+%Y%m%d-%I%M").zip
 cd out/target/product/$DEVICE
-#mv boot.img ${OUTFILE%.zip}.img
+mv boot.img ${OUTFILE%.zip}.img
 #zip -r9 $OUTFILE ${OUTFILE%.zip}.img
 
 #curl -T $OUTFILE https://oshi.at
